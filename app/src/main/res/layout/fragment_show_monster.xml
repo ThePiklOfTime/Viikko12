@@ -23,7 +23,7 @@
         android:layout_gravity="center|center"
 
         android:layout_marginTop="0dp"
-        android:src="@drawable/erno" />
+        android:src="@drawable/erno_vampire" />
 
     <TextView
         android:id="@+id/MonsterLifeText"
@@ -38,6 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
-        android:text="Attack monster" />
+        android:text="Attack monster"
+        android:layout_marginBottom="50dp"/>
 
 </FrameLayout>
