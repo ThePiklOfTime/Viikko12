@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/MonsterNameText"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.BossFightFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center"
+        android:layout_marginTop="150dp"
+        android:text="Monster name text" />
+
+    <ImageView
+        android:id="@+id/MonsterImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center|center"
+
+        android:layout_marginTop="0dp"
+        android:src="@drawable/erno" />
+
+    <TextView
+        android:id="@+id/MonsterLifeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center"
+        android:layout_marginTop="175dp"
+        android:text="Monster life text" />
+
+    <Button
+        android:id="@+id/AttackMonsterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:text="Attack monster" />
+
+</FrameLayout>
