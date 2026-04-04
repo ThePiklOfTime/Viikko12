@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ReturnFromFightButton"
+    android:id="@+id/FightMonstersActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FightMonstersActivity">
@@ -17,7 +17,7 @@
         android:onClick="showMonster"
         android:text="Näytä hirviö"
         app:layout_constraintEnd_toStartOf="@+id/BossFightFragmentButton"
-        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintStart_toEndOf="@+id/ReturnFromFightButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -31,10 +31,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/ShowMonsterFragmentButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:enabled="false"/>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/ReturnFromFightButton"
         android:layout_width="95dp"
         android:layout_height="64dp"
         android:layout_marginTop="4dp"
