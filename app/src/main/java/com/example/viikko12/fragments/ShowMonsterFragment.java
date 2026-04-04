@@ -2,13 +2,20 @@ package com.example.viikko12.fragments;
 
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.viikko12.GameManager;
+import com.example.viikko12.Monster;
 import com.example.viikko12.R;
+import com.example.viikko12.Skeleton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +28,12 @@ public class ShowMonsterFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    TextView monsterNameText, monsterLifeText;
+    ImageView monsterImage;
+    Button attackBtn;
+
+    Monster monster;
+    String monsterClass;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -60,7 +73,40 @@ public class ShowMonsterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_show_monster, container, false);
+        View view = inflater.inflate(R.layout.fragment_show_monster, container, false);
+        monsterImage = view.findViewById(R.id.MonsterImage);
+        monsterNameText = view.findViewById(R.id.MonsterNameText);
+        monsterLifeText = view.findViewById(R.id.MonsterLifeText);
+        attackBtn = view.findViewById(R.id.AttackMonsterButton);
+        GameManager gameManager = GameManager.getInstance();
+
+        monster = gameManager.generateMonster();
+
+        setMonsterLifeText();
+        attackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gameManager.getPlayer().attack(monster);
+                setMonsterLifeText();
+                if (monster.getLife() == 0) {
+                    monster = gameManager.generateMonster();
+                }
+            }
+        });
+        return view;
+    }
+    public void setMonsterLifeText() {
+        if (monster instanceof Skeleton){
+            monsterClass = "Luuranko";
+            monsterImage.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.erno_skeleton));
+        }
+        else {
+            monsterClass = "Vampyyri";
+            monsterImage.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.erno_vampire));
+        }
+        monsterNameText.setText(monster.getName());
+
+        String monsterLifeTxt = "Elämä: " + monster.getLife() + "/" + monster.getMaxLife() + "\n" + monsterClass;
+        monsterLifeText.setText(monsterLifeTxt);
     }
 }

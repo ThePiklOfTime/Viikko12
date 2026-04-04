@@ -3,9 +3,13 @@ package com.example.viikko12;
 import java.util.Random;
 
 public class GameManager {
-    private Player player;
+    private final Player player = new Player();
     private Monster latestMonster;
     private static GameManager gameManager;
+
+    private GameManager() {
+
+    }
     public static GameManager getInstance() {
         if (gameManager == null) {
             gameManager = new GameManager();
