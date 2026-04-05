@@ -15,5 +15,8 @@ public class Player {
     public int getScore() {
         return score;
     }
+    public void addToScore(int add) {
+        this.score += add;
+    }
 }
 

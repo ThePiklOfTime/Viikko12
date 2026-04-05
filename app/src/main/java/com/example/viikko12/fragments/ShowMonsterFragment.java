@@ -1,5 +1,6 @@
 package com.example.viikko12.fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
@@ -12,8 +13,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.viikko12.FightMonstersActivity;
 import com.example.viikko12.GameManager;
 import com.example.viikko12.Monster;
+import com.example.viikko12.Player;
 import com.example.viikko12.R;
 import com.example.viikko12.Skeleton;
 
@@ -34,6 +37,7 @@ public class ShowMonsterFragment extends Fragment {
 
     Monster monster;
     String monsterClass;
+    Player player;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -79,7 +83,7 @@ public class ShowMonsterFragment extends Fragment {
         monsterLifeText = view.findViewById(R.id.MonsterLifeText);
         attackBtn = view.findViewById(R.id.AttackMonsterButton);
         GameManager gameManager = GameManager.getInstance();
-
+        player = gameManager.getPlayer();
         monster = gameManager.generateMonster();
 
         setMonsterLifeText();
@@ -88,8 +92,18 @@ public class ShowMonsterFragment extends Fragment {
             public void onClick(View v) {
                 gameManager.getPlayer().attack(monster);
                 setMonsterLifeText();
+                player.addToScore(2);
+
                 if (monster.getLife() == 0) {
                     monster = gameManager.generateMonster();
+
+
+                }
+                if (player.getScore() >= 100) {
+                    Activity fightMonstersActivity = getActivity();
+                    if (fightMonstersActivity instanceof FightMonstersActivity) {
+                        ((FightMonstersActivity) fightMonstersActivity).setBossButtonVisible();
+                    }
                 }
             }
         });
